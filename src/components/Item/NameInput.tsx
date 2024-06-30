@@ -18,7 +18,7 @@ export const NameInput: Component<NameInputProps> = (props) => {
 
 	return (
 		<Editable.Root
-			class="my-1 border-b-2 border-blue-200 hover:cursor-text"
+			class="my-1 border-b-2 border-secondary border-opacity-50 hover:cursor-text"
 			placeholder={item.name}
 			autoResize
 			defaultValue={item.name}
@@ -28,7 +28,7 @@ export const NameInput: Component<NameInputProps> = (props) => {
 		>
 			<Editable.Area>
 				<Editable.Input
-					class="outline-dashed outline-1 outline-gray-400"
+					class="outline-dashed outline-1 outline-base-300"
 					data-tree-item-input={item.id}
 				/>
 				<Editable.Preview ref={props.ref} />

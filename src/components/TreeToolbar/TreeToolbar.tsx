@@ -1,11 +1,6 @@
 import { Component } from 'solid-js';
 import { useTreeContext } from '~/components/TreeProvider/useTreeContext';
-import {
-	itemsToSortedByTypeName,
-	ItemWithChildren,
-	treeToJSON,
-	treeToSortedByLevelTypeName,
-} from '~/lib/treeUtils';
+import { itemsToSortedByTypeName, ItemWithChildren, treeToJSON } from '~/lib/treeUtils';
 import { toaster } from '~/components/Toaster';
 
 const successToast = () =>
@@ -40,9 +35,16 @@ export const TreeToolbar: Component = () => {
 	}
 
 	return (
-		<div class="flex justify-center">
-			<button onClick={handleToJSON}>Copy JSON</button>
-			<button onClick={handleToText}>Copy ASCII</button>
+		<div class="join mb-4 flex">
+			<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToJSON}>
+				Copy JSON
+			</button>
+			<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToText}>
+				Copy ASCII
+			</button>
+			<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToText}>
+				Copy image
+			</button>
 		</div>
 	);
 };

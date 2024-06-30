@@ -42,7 +42,7 @@ export const Item: Component<ItemProps> = (props) => {
 					use:droppable
 					data-tree-item={props.id}
 					data-tree-item-level={item.level}
-					class={`${droppable.isActiveDroppable ? 'bg-blue-100' : ''} relative my-1 flex w-fit items-center text-nowrap rounded-md border-[1px] border-dashed border-gray-300 pl-2 pr-4 focus:bg-blue-200 focus:bg-opacity-30 focus:outline focus:outline-2 focus:outline-blue-500`}
+					class={`${droppable.isActiveDroppable ? 'bg-secondary bg-opacity-20' : ''} relative my-1 flex w-fit items-center text-nowrap rounded-md border-[1px] border-dashed border-secondary pl-2 pr-4 focus:bg-base-200 focus:bg-opacity-30 focus:outline focus:outline-2 focus:outline-secondary`}
 					tabIndex={0}
 					role="treeitem"
 					// style={transformStyle(draggable.transform)}

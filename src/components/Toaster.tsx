@@ -13,10 +13,10 @@ export const Toaster: Component = () => {
 	return (
 		<ArkToaster toaster={toaster}>
 			{(toast) => (
-				<Toast.Root class="z-10 grid grid-cols-[min-content_1fr_min-content] items-center gap-4 rounded-md border-2 border-gray-200 bg-white px-4 py-2 shadow-md">
-					<CheckCircle class="size-6 text-green-500" />
+				<Toast.Root role="alert" class="alert w-fit">
+					<CheckCircle class="size-6 text-success" />
 					<Toast.Title>{toast().title}</Toast.Title>
-					<Toast.CloseTrigger>
+					<Toast.CloseTrigger class="btn btn-circle btn-ghost">
 						<X />
 					</Toast.CloseTrigger>
 				</Toast.Root>

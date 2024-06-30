@@ -13,7 +13,7 @@ export const CustomDragShadow: Component = () => {
 
 	return (
 		<div
-			class="relative my-1 flex w-fit items-center text-nowrap rounded-md border-[1px] border-dashed border-gray-500 bg-blue-300 bg-opacity-30 pl-2 pr-4"
+			class="relative my-1 flex w-fit items-center text-nowrap rounded-md border-[1px] border-dashed border-secondary bg-secondary bg-opacity-20 pl-2 pr-4"
 			tabIndex={0}
 			role="treeitem"
 		>
@@ -23,7 +23,7 @@ export const CustomDragShadow: Component = () => {
 			<div class="mx-1">{itemType() === 'directory' ? <Directory /> : <File />}</div>
 			<Editable.Root class="my-1" autoResize value={itemName()}>
 				<Editable.Area>
-					<Editable.Input class="outline-dashed outline-1 outline-gray-400" />
+					<Editable.Input class="outline-dashed outline-1 outline-base-300" />
 					<Editable.Preview />
 				</Editable.Area>
 			</Editable.Root>

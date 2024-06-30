@@ -5,7 +5,7 @@
 		"dev": "vinxi dev",
 		"build": "vinxi build",
 		"start": "vinxi start",
-		"lint": "eslint src/ && prettier .",
+		"lint": "eslint src/ && prettier . --check",
 		"format": "eslint src/ --fix && prettier . --write",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"

@@ -52,7 +52,7 @@ function Hotkeys(props: { hotkeys: Hotkey[] }) {
 
 export default function Home() {
 	return (
-		<main class="mx-auto p-4 text-gray-700">
+		<main class="px-4 pt-8 md:container md:mx-auto">
 			<Toaster />
 			<Layout>
 				<DragDropProvider>
