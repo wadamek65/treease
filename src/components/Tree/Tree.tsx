@@ -13,7 +13,7 @@ import { useTreeContext } from '~/components/TreeProvider/useTreeContext';
 import { CustomDragShadow } from '~/components/CustomDragShadow';
 
 export const Tree: Component = () => {
-	const { changeParent, treeStore } = useTreeContext();
+	const { changeParent } = useTreeContext();
 	const [, { onDragEnd }] = useDragDropContext()!;
 
 	onDragEnd(({ draggable, droppable }) => {

@@ -49,7 +49,8 @@ export function focusFirstChildItemElement(): void {
 	}
 
 	const nextLevel = Number(activeElementLevel.value) + 1;
-	activeElement.parentNode
+	activeElement
+		?.closest<HTMLElement>('[data-tree-item-container="container"]')
 		?.querySelector<HTMLElement>(`[data-tree-item-level="${nextLevel}"]`)
 		?.focus();
 }

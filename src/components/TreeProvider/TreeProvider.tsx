@@ -1,7 +1,7 @@
 import { TreeContext, TreeStore } from '~/lib/TreeContext';
 import { ParentComponent } from 'solid-js';
 import { ItemTypes } from '~/lib/Item';
-import { isRootId, rootId } from '~/lib/itemUtils';
+import { isFile, isRootId, rootId } from '~/lib/itemUtils';
 import { createStore, produce, unwrap } from 'solid-js/store';
 import uniqid from 'uniqid';
 import { focusFirstChildItemElement, focusItemElement } from '~/lib/domUtils';
@@ -68,9 +68,9 @@ export const TreeProvider: ParentComponent<TreeProviderProps> = (props) => {
 
 	function collapseItem(id: string) {
 		setTreeStore('items', id, 'isCollapsed', (prevCollapsed) => {
-			if (prevCollapsed && !isRootId(id)) {
-				const parentId = treeStore.items[id].parentId;
-				focusItemElement(parentId);
+			const item = treeStore.items[id];
+			if ((prevCollapsed || isFile(item)) && !isRootId(id)) {
+				focusItemElement(item.parentId);
 			}
 
 			return true;

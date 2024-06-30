@@ -4,6 +4,51 @@ import { TreeProvider } from '~/components/TreeProvider/TreeProvider';
 import { DragDropProvider, DragDropSensors } from '@thisbeyond/solid-dnd';
 import { TreeToolbar } from '~/components/TreeToolbar/TreeToolbar';
 import { Toaster } from '~/components/Toaster';
+import { For } from 'solid-js';
+
+type Hotkey = {
+	keys: string[];
+	description: string;
+};
+
+const hotkeys: Hotkey[] = [
+	{ keys: ['d'], description: 'New directory' },
+	{ keys: ['f'], description: 'New file' },
+	{ keys: ['e'], description: 'Edit name' },
+	{ keys: ['r'], description: 'Recursive remove item' },
+	{ keys: ['⌘', 'd'], description: 'Recursive duplicate' },
+];
+
+const navigationHotkeys: Hotkey[] = [
+	{ keys: ['▼'], description: 'Focus below/first item' },
+	{ keys: ['▲'], description: 'Focus above/last item' },
+	{ keys: ['◀'], description: 'Collapse' },
+	{ keys: ['▶'], description: 'Expand' },
+];
+
+function Hotkeys(props: { hotkeys: Hotkey[] }) {
+	return (
+		<div class="grid grid-cols-[200px,1fr] items-center gap-x-8 gap-y-4">
+			<For each={props.hotkeys}>
+				{(hotkey) => (
+					<>
+						<span>{hotkey.description}</span>
+						<span class="flex items-center gap-x-2">
+							<For each={hotkey.keys}>
+								{(key, index) => (
+									<>
+										{index() > 0 && '+'}
+										<kbd class="kbd">{key}</kbd>
+									</>
+								)}
+							</For>
+						</span>
+					</>
+				)}
+			</For>
+		</div>
+	);
+}
 
 export default function Home() {
 	return (
@@ -23,41 +68,11 @@ export default function Home() {
 				<div>
 					<div>
 						<h2 class="mb-4 text-4xl">Hotkeys</h2>
-						<div class="grid grid-cols-[min-content_1fr] items-center gap-x-16 gap-y-4">
-							<span class="rounded-sm border-2 border-dashed border-blue-200 px-3 py-1 font-bold text-blue-500">
-								d
-							</span>
-							<span>
-								New <span class="font-bold text-blue-500">d</span>irectory
-							</span>
-							<span class="rounded-sm border-2 border-dashed border-blue-200 px-3 py-1 font-bold text-blue-500">
-								f
-							</span>
-							<span>
-								New <span class="font-bold text-blue-500">f</span>ile
-							</span>
-							<span class="rounded-sm border-2 border-dashed border-blue-200 px-3 py-1 font-bold text-blue-500">
-								e
-							</span>
-							<span>
-								<span class="font-bold text-blue-500">E</span>dit name
-							</span>
-							<span class="rounded-sm border-2 border-dashed border-blue-200 px-3 py-1 font-bold text-blue-500">
-								r
-							</span>
-							<span>
-								Recursive <span class="font-bold text-blue-500">r</span>emove item
-							</span>
-							<span class="rounded-sm border-2 border-dashed border-blue-200 px-3 py-1 font-bold text-blue-500">
-								b
-							</span>
-							<span>
-								Recursive <span class="font-bold text-blue-500">b</span>duplicate
-							</span>
-						</div>
+						<Hotkeys hotkeys={hotkeys} />
 					</div>
 					<div>
 						<h2 class="mb-4 mt-8 text-4xl">Navigation</h2>
+						<Hotkeys hotkeys={navigationHotkeys} />
 					</div>
 				</div>
 			</Layout>

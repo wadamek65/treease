@@ -86,15 +86,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-console.log(
-	directory('dir1', false, '')
-		.children([
-			file('file1.txt'),
-			file('file2.txt'),
-			directory('dir2').children([file('file3.txt')]),
-		])
-		.toItems(),
-);
 export const Primary: Story = {
 	args: {},
 	parameters: {

@@ -1,4 +1,4 @@
-import { Component, createMemo, For, Show } from 'solid-js';
+import { Component, createEffect, createMemo, For, Show } from 'solid-js';
 import { Directory } from '~/components/icons/Directory';
 import { File } from '~/components/icons/File';
 import { isDirectory, isRootId } from '~/lib/itemUtils';
@@ -11,21 +11,14 @@ import { useItemContext } from '~/components/ItemProvider/useItemContext';
 import { DotsSixVertical } from '~/components/icons/DotsSixVertical';
 import { createDraggable, createDroppable } from '@thisbeyond/solid-dnd';
 import { childrenToSortedByTypeName } from '~/lib/treeUtils';
+import { createShortcuts } from '~/components/Item/createShortcuts';
 
 type ItemProps = {
 	id: string;
 };
 
 export const Item: Component<ItemProps> = (props) => {
-	const {
-		treeStore,
-		collapseItem,
-		createNewItem,
-		expandItem,
-		removeItem,
-		toggleCollapsed,
-		duplicateItem,
-	} = useTreeContext();
+	const { treeStore, toggleCollapsed } = useTreeContext();
 	const item = useItemContext();
 
 	const id = () => props.id;
@@ -40,52 +33,10 @@ export const Item: Component<ItemProps> = (props) => {
 		return childrenToSortedByTypeName(treeStore, props.id);
 	});
 
-	const keyDownHandler = (event: KeyboardEvent) => {
-		if (event.currentTarget !== event.target) {
-			return;
-		}
-		const isFile = item.itemType === 'file';
-		switch (event.code) {
-			case 'KeyF': {
-				createNewItem(isFile ? item.parentId : props.id, 'file');
-				event.stopPropagation();
-				break;
-			}
-			case 'KeyD': {
-				createNewItem(isFile ? item.parentId : props.id, 'directory');
-				event.stopPropagation();
-				break;
-			}
-			case 'KeyR': {
-				removeItem(props.id);
-				event.stopPropagation();
-				break;
-			}
-			case 'KeyE': {
-				nameInputElement.focus();
-				event.stopPropagation();
-				break;
-			}
-			case 'KeyB': {
-				duplicateItem(props.id);
-				event.stopPropagation();
-				break;
-			}
-			case 'ArrowRight': {
-				expandItem(props.id);
-				event.stopPropagation();
-				break;
-			}
-			case 'ArrowLeft': {
-				collapseItem(props.id);
-				event.stopPropagation();
-				break;
-			}
-		}
-	};
+	createEffect(() => createShortcuts(containerElement, nameInputElement));
 
 	return (
-		<div>
+		<div data-tree-item-container="container">
 			<div ref={draggable.ref}>
 				<div
 					use:droppable
@@ -94,7 +45,6 @@ export const Item: Component<ItemProps> = (props) => {
 					class={`${droppable.isActiveDroppable ? 'bg-blue-100' : ''} relative my-1 flex w-fit items-center text-nowrap rounded-md border-[1px] border-dashed border-gray-300 pl-2 pr-4 focus:bg-blue-200 focus:bg-opacity-30 focus:outline focus:outline-2 focus:outline-blue-500`}
 					tabIndex={0}
 					role="treeitem"
-					onKeyDown={keyDownHandler}
 					// style={transformStyle(draggable.transform)}
 					ref={containerElement}
 				>
