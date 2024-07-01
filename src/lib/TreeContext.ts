@@ -3,6 +3,7 @@ import { ItemTypes, Item } from '~/lib/Item';
 
 export type TreeStore = {
 	items: Record<string, Item>;
+	isPrinting: boolean;
 };
 
 type TreeContextValue = {
@@ -15,6 +16,7 @@ type TreeContextValue = {
 	toggleCollapsed: (id: string) => void;
 	changeParent: (id: string, newParentId: string) => void;
 	duplicateItem: (id: string) => void;
+	setIsPrinting: (updater: ((isPrinting: boolean) => boolean) | boolean) => void;
 };
 
 export const TreeContext = createContext<TreeContextValue>();

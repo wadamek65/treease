@@ -8,8 +8,9 @@ const successToast = () =>
 		title: 'Copied to clipboard',
 		type: 'success',
 	});
+
 export const TreeToolbar: Component = () => {
-	const { treeStore } = useTreeContext();
+	const { treeStore, setIsPrinting } = useTreeContext();
 
 	function handleToJSON() {
 		const json = treeToJSON(treeStore);
@@ -34,17 +35,31 @@ export const TreeToolbar: Component = () => {
 		navigator.clipboard.writeText(text).then(() => successToast());
 	}
 
+	function handlePrintMode() {
+		setIsPrinting((prevPrinting) => !prevPrinting);
+	}
+
 	return (
-		<div class="join mb-4 flex">
-			<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToJSON}>
-				Copy JSON
-			</button>
-			<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToText}>
-				Copy ASCII
-			</button>
-			<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToText}>
-				Copy image
-			</button>
+		<div class="flex">
+			<div class="join mb-4 flex">
+				<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToJSON}>
+					Copy JSON
+				</button>
+				<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToText}>
+					Copy ASCII
+				</button>
+			</div>
+			<div class="form-control ml-8 justify-self-end">
+				<label class="label cursor-pointer">
+					<span class="label-text mr-4">Print mode</span>
+					<input
+						type="checkbox"
+						class="toggle toggle-primary"
+						checked={treeStore.isPrinting}
+						onChange={handlePrintMode}
+					/>
+				</label>
+			</div>
 		</div>
 	);
 };

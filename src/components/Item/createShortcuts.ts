@@ -4,12 +4,13 @@ import { useItemContext } from '~/components/ItemProvider/useItemContext';
 
 export function createShortcuts(containerElement: HTMLElement, nameInputElement: HTMLDivElement) {
 	const item = useItemContext();
-	const { collapseItem, createNewItem, expandItem, removeItem, duplicateItem } = useTreeContext();
+	const { treeStore, collapseItem, createNewItem, expandItem, removeItem, duplicateItem } =
+		useTreeContext();
 
 	createShortcut(
 		['Alt', 'D'],
 		(event) => {
-			if (event?.target !== containerElement) {
+			if (event?.target !== containerElement || treeStore.isPrinting) {
 				return;
 			}
 			duplicateItem(item.id);
@@ -20,7 +21,7 @@ export function createShortcuts(containerElement: HTMLElement, nameInputElement:
 	createShortcut(
 		['D'],
 		(event) => {
-			if (event?.target !== containerElement) {
+			if (event?.target !== containerElement || treeStore.isPrinting) {
 				return;
 			}
 			const isFile = item.itemType === 'file';
@@ -32,7 +33,7 @@ export function createShortcuts(containerElement: HTMLElement, nameInputElement:
 	createShortcut(
 		['F'],
 		(event) => {
-			if (event?.target !== containerElement) {
+			if (event?.target !== containerElement || treeStore.isPrinting) {
 				return;
 			}
 			const isFile = item.itemType === 'file';
@@ -44,7 +45,7 @@ export function createShortcuts(containerElement: HTMLElement, nameInputElement:
 	createShortcut(
 		['E'],
 		(event) => {
-			if (event?.target !== containerElement) {
+			if (event?.target !== containerElement || treeStore.isPrinting) {
 				return;
 			}
 			nameInputElement.focus();
@@ -55,7 +56,7 @@ export function createShortcuts(containerElement: HTMLElement, nameInputElement:
 	createShortcut(
 		['R'],
 		(event) => {
-			if (event?.target !== containerElement) {
+			if (event?.target !== containerElement || treeStore.isPrinting) {
 				return;
 			}
 			removeItem(item.id);
@@ -66,7 +67,7 @@ export function createShortcuts(containerElement: HTMLElement, nameInputElement:
 	createShortcut(
 		['ArrowRight'],
 		(event) => {
-			if (event?.target !== containerElement) {
+			if (event?.target !== containerElement || treeStore.isPrinting) {
 				return;
 			}
 			expandItem(item.id);
@@ -77,7 +78,7 @@ export function createShortcuts(containerElement: HTMLElement, nameInputElement:
 	createShortcut(
 		['ArrowLeft'],
 		(event) => {
-			if (event?.target !== containerElement) {
+			if (event?.target !== containerElement || treeStore.isPrinting) {
 				return;
 			}
 			collapseItem(item.id);

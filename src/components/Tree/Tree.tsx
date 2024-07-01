@@ -11,6 +11,7 @@ import { ItemProvider } from '~/components/ItemProvider/ItemProvider';
 import { DragOverlay, useDragDropContext } from '@thisbeyond/solid-dnd';
 import { useTreeContext } from '~/components/TreeProvider/useTreeContext';
 import { CustomDragShadow } from '~/components/CustomDragShadow';
+import { ImageExportModal } from '~/components/ImageExportModal';
 
 export const Tree: Component = () => {
 	const { changeParent } = useTreeContext();
@@ -45,7 +46,8 @@ export const Tree: Component = () => {
 	});
 
 	return (
-		<div class="flex justify-start">
+		<div class="flex justify-start" id="file-tree">
+			<ImageExportModal />
 			<DragOverlay>
 				<CustomDragShadow />
 			</DragOverlay>

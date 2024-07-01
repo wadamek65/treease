@@ -17,6 +17,7 @@ export const initialState: TreeStore = {
 			level: 0,
 		},
 	},
+	isPrinting: false,
 };
 
 type TreeProviderProps = {
@@ -178,6 +179,10 @@ export const TreeProvider: ParentComponent<TreeProviderProps> = (props) => {
 		);
 	}
 
+	function setIsPrinting(updater: ((isPrinting: boolean) => boolean) | boolean) {
+		setTreeStore('isPrinting', updater);
+	}
+
 	return (
 		<TreeContext.Provider
 			value={{
@@ -190,6 +195,7 @@ export const TreeProvider: ParentComponent<TreeProviderProps> = (props) => {
 				toggleCollapsed,
 				changeParent,
 				duplicateItem,
+				setIsPrinting,
 			}}
 		>
 			{props.children}

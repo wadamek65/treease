@@ -13,7 +13,7 @@ export const CustomDragShadow: Component = () => {
 
 	return (
 		<div
-			class="relative my-1 flex w-fit items-center text-nowrap rounded-md border-[1px] border-dashed border-secondary bg-secondary bg-opacity-20 pl-2 pr-4"
+			class="relative my-1 flex w-fit items-center text-nowrap rounded-md border-0 border-dashed border-secondary bg-secondary bg-opacity-20 pl-2 pr-4"
 			tabIndex={0}
 			role="treeitem"
 		>

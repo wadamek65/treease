@@ -6,6 +6,7 @@ import { Item } from '~/lib/Item';
 import uniqid from 'uniqid';
 import { DragDropProvider, DragDropSensors } from '@thisbeyond/solid-dnd';
 import { rootId } from '~/lib/itemUtils';
+import { setIsPrinting } from '~/lib/isPrinting';
 
 function file(name: string, isCollapsed: boolean = false, parentId?: string): Partial<Item> {
 	return {
@@ -87,7 +88,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-	args: {},
 	parameters: {
 		initialValue: {
 			items: directory('/root', false, '', rootId)
@@ -100,11 +100,11 @@ export const Primary: Story = {
 				])
 				.toItems(),
 		},
+		isPrinting: false,
 	},
 };
 
 export const Sorting: Story = {
-	args: {},
 	parameters: {
 		initialValue: {
 			items: directory('/root', false, '', rootId)
@@ -118,12 +118,12 @@ export const Sorting: Story = {
 					]),
 				])
 				.toItems(),
+			isPrinting: false,
 		},
 	},
 };
 
 export const Collapsed: Story = {
-	args: {},
 	parameters: {
 		initialValue: {
 			items: directory('/root', false, '', rootId)
@@ -135,6 +135,24 @@ export const Collapsed: Story = {
 					]),
 				])
 				.toItems(),
+			isPrinting: false,
+		},
+	},
+};
+
+export const PrintMode: Story = {
+	parameters: {
+		initialValue: {
+			items: directory('/root', false, '', rootId)
+				.children([
+					directory('dir1', false, rootId).children([
+						file('file1.txt'),
+						file('file2.txt'),
+						directory('dir2').children([file('file3.txt')]),
+					]),
+				])
+				.toItems(),
+			isPrinting: true,
 		},
 	},
 };
