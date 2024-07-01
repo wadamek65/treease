@@ -51,7 +51,7 @@ export const TreeToolbar: Component = () => {
 			</div>
 			<div class="form-control ml-8 justify-self-end">
 				<label class="label cursor-pointer">
-					<span class="label-text mr-4">Print mode</span>
+					<span class="label-text mr-4 font-bold">Print mode</span>
 					<input
 						type="checkbox"
 						class="toggle toggle-primary"

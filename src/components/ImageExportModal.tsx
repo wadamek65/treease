@@ -1,6 +1,6 @@
 import { Component } from 'solid-js';
 
-export const ImageExportModal: Component = (props) => {
+export const ImageExportModal: Component = () => {
 	return (
 		<dialog id="image-export-modal" class="modal">
 			<div class="modal-box">

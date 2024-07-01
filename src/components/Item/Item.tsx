@@ -55,12 +55,15 @@ export const Item: Component<ItemProps> = (props) => {
 					ref={containerElement}
 				>
 					<Show when={!isRootId(props.id) && !treeStore.isPrinting}>
-						<div {...draggable.dragActivators} class="absolute -left-6 hover:cursor-grab">
+						<div
+							{...draggable.dragActivators}
+							class={cn(isDirectory(item) ? '-left-10' : '-left-5', 'absolute hover:cursor-grab')}
+						>
 							<DotsSixVertical class="size-5" />
 						</div>
 					</Show>
 					<Show when={isDirectory(item)}>
-						<button onClick={() => toggleCollapsed(props.id)}>
+						<button class="absolute -left-5" onClick={() => toggleCollapsed(props.id)}>
 							{!item.isCollapsed ? (
 								<CaretDown class="mr-1 size-4" />
 							) : (
@@ -83,7 +86,7 @@ export const Item: Component<ItemProps> = (props) => {
 				</div>
 			</div>
 			<Show when={!item.isCollapsed}>
-				<div class="border-l-2 pl-8">
+				<div class="border-l-2 pl-10">
 					<For each={childrenIds()}>
 						{(childId) => (
 							<ItemProvider id={childId}>

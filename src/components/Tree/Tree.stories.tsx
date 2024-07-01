@@ -6,7 +6,6 @@ import { Item } from '~/lib/Item';
 import uniqid from 'uniqid';
 import { DragDropProvider, DragDropSensors } from '@thisbeyond/solid-dnd';
 import { rootId } from '~/lib/itemUtils';
-import { setIsPrinting } from '~/lib/isPrinting';
 
 function file(name: string, isCollapsed: boolean = false, parentId?: string): Partial<Item> {
 	return {
