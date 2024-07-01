@@ -17,7 +17,7 @@ export const Toaster: Component = () => {
 					<CheckCircle class="size-6 text-success" />
 					<Toast.Title>{toast().title}</Toast.Title>
 					<Toast.CloseTrigger class="btn btn-circle btn-ghost">
-						<X />
+						<X class="size-4" />
 					</Toast.CloseTrigger>
 				</Toast.Root>
 			)}

@@ -12,6 +12,7 @@ import { DotsSixVertical } from '~/components/icons/DotsSixVertical';
 import { createDraggable, createDroppable } from '@thisbeyond/solid-dnd';
 import { childrenToSortedByTypeName } from '~/lib/treeUtils';
 import { createShortcuts } from '~/components/Item/createShortcuts';
+import { ExtensionIcon } from '~/components/ExtensionIcon/ExtensionIcon';
 
 type ItemProps = {
 	id: string;
@@ -23,6 +24,7 @@ export const Item: Component<ItemProps> = (props) => {
 
 	const id = () => props.id;
 
+	// itemName and itemType are not reactive: https://github.com/thisbeyond/solid-dnd/issues/86
 	const draggable = createDraggable(id(), { itemName: item.name, itemType: item.itemType });
 	const droppable = createDroppable(id());
 
@@ -50,15 +52,21 @@ export const Item: Component<ItemProps> = (props) => {
 				>
 					<Show when={!isRootId(props.id)}>
 						<div {...draggable.dragActivators} class="absolute -left-6 hover:cursor-grab">
-							<DotsSixVertical />
+							<DotsSixVertical class="size-5" />
 						</div>
 					</Show>
 					<Show when={isDirectory(item)}>
 						<button onClick={() => toggleCollapsed(props.id)}>
-							{!item.isCollapsed ? <CaretDown /> : <CaretRight />}
+							{!item.isCollapsed ? <CaretDown class="size-4" /> : <CaretRight class="size-4" />}
 						</button>
 					</Show>
-					<div class="mx-1">{item.itemType === 'directory' ? <Directory /> : <File />}</div>
+					<div class="mx-1">
+						<ExtensionIcon
+							class="size-6 text-secondary"
+							itemType={item.itemType}
+							fileName={item.name}
+						/>
+					</div>
 					<NameInput focusElement={containerElement} ref={nameInputElement} />
 				</div>
 			</div>
