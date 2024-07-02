@@ -59,7 +59,9 @@ export const TreeProvider: ParentComponent<TreeProviderProps> = (props) => {
 			'items',
 			produce((currentItems) => {
 				function removeRecursive(parentId: string) {
-					delete currentItems[parentId];
+					if (!isRootId(parentId)) {
+						delete currentItems[parentId];
+					}
 
 					Object.values(currentItems)
 						.filter((item) => item.parentId === parentId)
