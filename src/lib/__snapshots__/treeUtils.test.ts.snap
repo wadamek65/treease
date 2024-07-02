@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`JSONToASCII tests - 0 1`] = `
-"┌ /root
+"┌ /root/
 ├── a_dir/
 ├─── a_dir/
 ├──── file.txt
@@ -14,7 +14,7 @@ exports[`JSONToASCII tests - 0 1`] = `
 `;
 
 exports[`JSONToASCII tests - 1 1`] = `
-"┌ /root
+"┌ /root/
 ├── a_dir/
 ├─── a_file.txt
 ├─── b_file.txt
@@ -23,151 +23,13 @@ exports[`JSONToASCII tests - 1 1`] = `
 `;
 
 exports[`JSONToASCII tests - 2 1`] = `
-"┌ /root
+"┌ /root/
 ├── dir1/
 ├─── dir2/
 ├──── file3.txt
 ├─── file1.txt
 ├─── file2.txt
 "
-`;
-
-exports[`treeToJSON 1`] = `
-{
-  "children": [
-    {
-      "children": [
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "a_file.txt",
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "itemType": "file",
-              "level": 4,
-              "name": "file.txt",
-            },
-          ],
-          "itemType": "directory",
-          "level": 3,
-          "name": "a_dir",
-        },
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "c_file.txt",
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "itemType": "file",
-              "level": 4,
-              "name": "file.txt",
-            },
-          ],
-          "itemType": "directory",
-          "level": 3,
-          "name": "b_dir",
-        },
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "b_file.txt",
-        },
-      ],
-      "itemType": "directory",
-      "level": 2,
-      "name": "a_dir",
-    },
-  ],
-  "itemType": "directory",
-  "level": 1,
-  "name": "/root",
-}
-`;
-
-exports[`treeToJSON 2`] = `
-{
-  "children": [
-    {
-      "children": [
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "a_file.txt",
-        },
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "c_file.txt",
-        },
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "b_file.txt",
-        },
-      ],
-      "itemType": "directory",
-      "level": 2,
-      "name": "a_dir",
-    },
-  ],
-  "itemType": "directory",
-  "level": 1,
-  "name": "/root",
-}
-`;
-
-exports[`treeToJSON 3`] = `
-{
-  "children": [
-    {
-      "children": [
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "file1.txt",
-        },
-        {
-          "children": [],
-          "itemType": "file",
-          "level": 3,
-          "name": "file2.txt",
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "itemType": "file",
-              "level": 4,
-              "name": "file3.txt",
-            },
-          ],
-          "itemType": "directory",
-          "level": 3,
-          "name": "dir2",
-        },
-      ],
-      "itemType": "directory",
-      "level": 2,
-      "name": "dir1",
-    },
-  ],
-  "itemType": "directory",
-  "level": 1,
-  "name": "/root",
-}
 `;
 
 exports[`treeToJSON tests - 0 1`] = `

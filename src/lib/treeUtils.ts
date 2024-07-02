@@ -31,7 +31,7 @@ export function JSONToASCII(root: PartialItem): string {
 			.join('');
 	}
 
-	return '┌ ' + root.name + '\n' + recursiveToText(root);
+	return '┌ ' + root.name + '/\n' + recursiveToText(root);
 }
 
 export function childrenToSortedByTypeName(tree: TreeStore, parentId: string): string[] {
