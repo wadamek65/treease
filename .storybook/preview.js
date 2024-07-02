@@ -1,5 +1,7 @@
 import '../src/app.css';
 
+window.IS_STORYBOOK = true;
+
 const preview = {
 	parameters: {
 		controls: {

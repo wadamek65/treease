@@ -5,6 +5,9 @@ import { isFile, isRootId, rootId } from '~/lib/itemUtils';
 import { createStore, produce, unwrap } from 'solid-js/store';
 import uniqid from 'uniqid';
 import { focusFirstChildItemElement, focusItemElement } from '~/lib/domUtils';
+import { makePersisted } from '@solid-primitives/storage';
+
+const STORE_VERSION = '1';
 
 export const initialState: TreeStore = {
 	items: {
@@ -22,10 +25,17 @@ export const initialState: TreeStore = {
 
 type TreeProviderProps = {
 	initialValue?: TreeStore;
+	isPersisted?: boolean;
 };
 
 export const TreeProvider: ParentComponent<TreeProviderProps> = (props) => {
-	const [treeStore, setTreeStore] = createStore<TreeStore>(props.initialValue ?? initialState);
+	const [treeStore, setTreeStore] = window.IS_STORYBOOK
+		? createStore<TreeStore>(props.initialValue ?? initialState)
+		: makePersisted(
+				// eslint-disable-next-line solid/reactivity
+				createStore<TreeStore>(props.initialValue ?? initialState),
+				{ name: STORE_VERSION },
+			);
 
 	function createNewItem(parentId: string, itemType: ItemTypes) {
 		const newId = uniqid.time();
@@ -202,3 +212,5 @@ export const TreeProvider: ParentComponent<TreeProviderProps> = (props) => {
 		</TreeContext.Provider>
 	);
 };
+
+export default TreeProvider;

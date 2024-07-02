@@ -13,6 +13,9 @@ importers:
       '@solid-primitives/keyboard':
         specifier: 1.2.8
         version: 1.2.8(solid-js@1.8.17)
+      '@solid-primitives/storage':
+        specifier: 3.7.1
+        version: 3.7.1(solid-js@1.8.17)
       '@solidjs/router':
         specifier: 0.13.5
         version: 0.13.5(solid-js@1.8.17)
@@ -2563,6 +2566,21 @@ packages:
       }
     peerDependencies:
       solid-js: ^1.6.12
+
+  '@solid-primitives/storage@3.7.1':
+    resolution:
+      {
+        integrity: sha512-tAmZKQg44RjDjrtWO/5hCOrktQspn/yVV0ySb7yKr7B3CVQlTQtldw3W8UetytJSD9podb9cplvvkq75fgpB1Q==,
+      }
+    peerDependencies:
+      '@tauri-apps/plugin-store': '*'
+      solid-js: ^1.6.12
+      solid-start: '*'
+    peerDependenciesMeta:
+      '@tauri-apps/plugin-store':
+        optional: true
+      solid-start:
+        optional: true
 
   '@solid-primitives/utils@6.2.3':
     resolution:
@@ -11432,6 +11450,11 @@ snapshots:
       solid-js: 1.8.17
 
   '@solid-primitives/rootless@1.4.5(solid-js@1.8.17)':
+    dependencies:
+      '@solid-primitives/utils': 6.2.3(solid-js@1.8.17)
+      solid-js: 1.8.17
+
+  '@solid-primitives/storage@3.7.1(solid-js@1.8.17)':
     dependencies:
       '@solid-primitives/utils': 6.2.3(solid-js@1.8.17)
       solid-js: 1.8.17

@@ -1,10 +1,12 @@
 import { Layout } from '~/components/Layout';
 import { Tree } from '~/components/Tree/Tree';
-import { TreeProvider } from '~/components/TreeProvider/TreeProvider';
 import { DragDropProvider, DragDropSensors } from '@thisbeyond/solid-dnd';
 import { TreeToolbar } from '~/components/TreeToolbar/TreeToolbar';
 import { Toaster } from '~/components/Toaster';
 import { For } from 'solid-js';
+import { clientOnly } from '@solidjs/start';
+
+const TreeProvider = clientOnly(() => import('~/components/TreeProvider/TreeProvider'));
 
 type Hotkey = {
 	keys: string[];
