@@ -1,9 +1,8 @@
 import { Component } from 'solid-js';
 import { DotsSixVertical } from '~/components/icons/DotsSixVertical';
-import { Directory } from '~/components/icons/Directory';
-import { File } from '~/components/icons/File';
 import { useDragDropContext } from '@thisbeyond/solid-dnd';
 import { Editable } from '@ark-ui/solid';
+import { ExtensionIcon } from '~/components/ExtensionIcon/ExtensionIcon';
 
 export const CustomDragShadow: Component = () => {
 	const [{ active }] = useDragDropContext()!;
@@ -20,7 +19,9 @@ export const CustomDragShadow: Component = () => {
 			<div class="absolute -left-6 hover:cursor-grab">
 				<DotsSixVertical />
 			</div>
-			<div class="mx-1">{itemType() === 'directory' ? <Directory /> : <File />}</div>
+			<div class="mr-1">
+				<ExtensionIcon class="size-6 text-secondary" itemType={itemType()} fileName={itemName()} />
+			</div>
 			<Editable.Root class="my-1" autoResize value={itemName()}>
 				<Editable.Area>
 					<Editable.Input class="outline-dashed outline-1 outline-base-300" />

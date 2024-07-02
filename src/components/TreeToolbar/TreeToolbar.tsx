@@ -40,8 +40,8 @@ export const TreeToolbar: Component = () => {
 	}
 
 	return (
-		<div class="flex">
-			<div class="join mb-4 flex">
+		<div class="mb-4 flex flex-wrap items-center">
+			<div class="join flex">
 				<button class="btn btn-outline btn-primary join-item btn-sm" onClick={handleToJSON}>
 					Copy JSON
 				</button>
@@ -50,7 +50,7 @@ export const TreeToolbar: Component = () => {
 				</button>
 			</div>
 			<div class="form-control ml-8 justify-self-end">
-				<label class="label cursor-pointer">
+				<label class="label cursor-pointer p-0">
 					<span class="label-text mr-4 font-bold">Print mode</span>
 					<input
 						type="checkbox"
