@@ -13,6 +13,7 @@
 	},
 	"dependencies": {
 		"@ark-ui/solid": "3.3.0",
+		"@sentry/solid": "8.13.0",
 		"@solid-primitives/keyboard": "1.2.8",
 		"@solid-primitives/storage": "3.7.1",
 		"@solidjs/router": "0.13.5",
