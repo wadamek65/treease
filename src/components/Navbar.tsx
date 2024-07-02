@@ -13,10 +13,12 @@ export const Navbar: Component = () => {
 			<div class="flex-none">
 				<ul class="menu menu-horizontal items-center px-1">
 					<li>
-						<A href={'https://wadamek.me'}>wadamek.me</A>
+						<A target="_blank" href={'https://wadamek.me'}>
+							wadamek.me
+						</A>
 					</li>
 					<li>
-						<A href={'https://github.com/wadamek65/treease'}>
+						<A target="_blank" href={'https://github.com/wadamek65/treease'}>
 							<GitHub class="size-8" />
 						</A>
 					</li>
