@@ -16,12 +16,12 @@ const hotkeys: Hotkey[] = [
 	{ keys: ['f'], description: 'New file' },
 	{ keys: ['e'], description: 'Edit name' },
 	{ keys: ['r'], description: 'Recursive remove item' },
-	{ keys: ['⌘', 'd'], description: 'Recursive duplicate' },
+	{ keys: ['alt', 'd'], description: 'Recursive duplicate' },
 ];
 
 const navigationHotkeys: Hotkey[] = [
-	{ keys: ['▼'], description: 'Focus below/first item' },
-	{ keys: ['▲'], description: 'Focus above/last item' },
+	{ keys: ['▼'], description: 'Focus below' },
+	{ keys: ['▲'], description: 'Focus above' },
 	{ keys: ['◀'], description: 'Collapse' },
 	{ keys: ['▶'], description: 'Expand' },
 ];
@@ -67,7 +67,8 @@ export default function Home() {
 				</DragDropProvider>
 				<div>
 					<div>
-						<h2 class="mb-4 text-4xl">Hotkeys</h2>
+						<h2 class="mb-2 text-4xl">Hotkeys</h2>
+						<div class="mb-4 font-bold text-accent">When element is focused:</div>
 						<Hotkeys hotkeys={hotkeys} />
 					</div>
 					<div>

@@ -5,6 +5,7 @@
 		"dev": "vinxi dev",
 		"build": "vinxi build",
 		"start": "vinxi start",
+		"test": "vitest",
 		"lint": "eslint src/ && prettier . --check",
 		"format": "eslint src/ --fix && prettier . --write",
 		"storybook": "storybook dev -p 6006",
@@ -50,7 +51,8 @@
 		"storybook-solidjs": "1.0.0-beta.2",
 		"storybook-solidjs-vite": "1.0.0-beta.2",
 		"typescript-eslint": "7.13.1",
-		"vite-tsconfig-paths": "4.3.2"
+		"vite-tsconfig-paths": "4.3.2",
+		"vitest": "^1.6.0"
 	},
 	"eslintConfig": {
 		"extends": [

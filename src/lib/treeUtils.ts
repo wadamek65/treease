@@ -20,6 +20,20 @@ export function treeToJSON(tree: TreeStore): ItemWithChildren {
 	return toJSONRecursive(rootId);
 }
 
+export function JSONToASCII(root: PartialItem): string {
+	function recursiveToText(item: ItemWithChildren): string {
+		return itemsToSortedByTypeName(item.children)
+			.map((child) => {
+				const indent = child.level > 0 ? '├' + '─'.repeat(child.level) : '';
+				const leadingSlash = child.itemType === 'directory' ? '/' : '';
+				return indent + ' ' + child.name + leadingSlash + '\n' + recursiveToText(child);
+			})
+			.join('');
+	}
+
+	return '┌ ' + root.name + '\n' + recursiveToText(root);
+}
+
 export function childrenToSortedByTypeName(tree: TreeStore, parentId: string): string[] {
 	return Object.values(tree.items)
 		.filter((item) => item.parentId === parentId)
