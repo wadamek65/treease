@@ -23,8 +23,14 @@ export const Item: Component<ItemProps> = (props) => {
 
 	const id = () => props.id;
 
-	// itemName and itemType are not reactive: https://github.com/thisbeyond/solid-dnd/issues/86
-	const draggable = createDraggable(id(), { itemName: item.name, itemType: item.itemType });
+	const draggable = createDraggable(id(), {
+		get itemName() {
+			return item.name;
+		},
+		get itemType() {
+			return item.itemType;
+		},
+	});
 	const droppable = createDroppable(id());
 
 	let nameInputElement!: HTMLDivElement;

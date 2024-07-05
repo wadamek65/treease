@@ -11,7 +11,7 @@ export default createHandler(() => (
 					<title>treease</title>
 					<meta
 						name="description"
-						content="Simple tool to quickly create a file structure with export for documentation purposes."
+						content="Quickly sketch out file structures with export for documentation purposes."
 					/>
 
 					<link rel="icon" href="/favicon.svg" />
